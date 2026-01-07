@@ -40,7 +40,7 @@ const FrontPageLinks = [
             }
         ],
         index: 0,
-        isActive: false,
+        isActive: true,
     },
     {
         name: "Nails",

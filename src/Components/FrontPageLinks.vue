@@ -83,7 +83,23 @@ function AdjustGallery(direction, link) {
       </div>
     </main>
   </div>
-  
+  <br/>
+  <div class="container">
+    <div class="department" v-for="link in FrontPageLinks.filter(l => l.isActive)" :key="link.name">
+      <div class="head">
+          <div class="head-top">
+            {{link.label}}
+          </div>
+          <div class="head-bottom">
+            
+          </div>
+      </div>
+      <div class="dep-inf">
+        efwefwwe
+      </div>
+    </div>
+  </div>
+  <br/>
 </template>
 
 <style scoped>
@@ -93,6 +109,8 @@ function AdjustGallery(direction, link) {
   height: fit-content;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
 main {
@@ -204,5 +222,58 @@ button {
   background-color: rgba(var(--bs-header-bg-rgb), 0.5);
 }
 
+.department {
+  position: relative;
+  width: 20%;
+  height: fit-content;
+  justify-items: center;
+}
+
+.head {
+  width: 210px;
+}
+
+.head-top {
+  position: relative;
+  width: 90%;
+  left: 10px;
+  text-align: center;
+  border-bottom: 3px solid rgb(var(--bs-header-bg-rgb));
+  box-sizing: border-box;
+  padding: 5px 10px;
+  border-radius: 0 0 10px 0;
+}
+
+.head-bottom {
+  position: relative;
+  width: 90%;
+  height: 20px;
+  left: 0;
+  margin-top: -3px;
+  border-top: 3px solid rgb(var(--bs-header-bg-rgb));
+  box-sizing: border-box;
+  padding: 5px 10px;
+  border-radius: 10px 0 0 0;
+}
+
+.dep-inf {
+  position: relative;
+  width: 6g0%;
+  height: 100px;
+  text-align: center;
+  border-radius: 15px;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.dep-inf::before {
+  position: absolute;
+  content: "";
+  inset: 0;
+  background: rgba(var(--bs-header-bg-rgb), 0.2);
+  backdrop-filter: blur(10px);
+  transform: scale(1.15);
+  z-index: -1;
+}
 
 </style>
