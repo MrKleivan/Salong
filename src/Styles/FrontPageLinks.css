@@ -1,0 +1,351 @@
+
+
+.banner {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 80vh;
+    margin: 0;
+    padding: 0;
+}
+
+.banner::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    margin: 0;
+    width: 100%;
+    height: 100vh;
+    background-image: url("/bak.jpeg");
+    background-size: cover;
+    background-position: center;
+    opacity: 0.6;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.banner-content {
+    position: relative;
+    width: 80%;
+    margin: 5% 8%;
+    font-family: "Alex Brush", cursive;
+    font-size: 6vw;
+    text-shadow: 1px 2px 20px rgb(var(--bs-header-color-rgb));
+    color: rgb(var(--bs-body-color-rgb));
+}
+
+.content-one {
+    position: relative;
+    width: 100%;
+}
+
+.content-two {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: 20%;
+}
+
+.container {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: fit-content;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 -5px 20px 2px rgb(var(--bs-header-color-rgb));
+    background-color: rgb(var(--bs-body-bg-rgb));
+    z-index: 1;
+}
+
+.departments-head {
+    width: 100%;
+}
+
+.departments-head-title {
+    width: 50%;
+    margin: 5px auto;
+    padding: 2px;
+    text-align: center;
+    color: rgba(var(--bs-header-bg-rgb), 0.6);
+    font-family: "Alex Brush", cursive;
+    font-size: 5vh;
+    font-weight: bold;
+    border-radius: 10px;
+    border-bottom: 2px solid rgb(var(--bs-body-color-rgb));
+}
+
+.department {
+    position: relative;
+    width: 24%;
+    height: fit-content;
+    margin: 6% auto;
+    justify-content: center;
+    align-content: center;
+    overflow: hidden;
+}
+
+.head {
+    position: relative;
+    width: 70%;
+    margin: auto;;
+    box-sizing: border-box;
+}
+
+.head-top {
+    position: relative;
+    width: 90%;
+    margin: auto;
+    text-align: center;
+    color: rgba(var(--bs-header-bg-rgb), 0.9);
+    font-family: "Alex Brush", cursive;
+    font-size: 2.5rem;
+}
+
+.head-bottom {
+    position: relative;
+    width: 100%;
+    height: 10px;
+    background-color: rgb(var(--bs-body-bg-rgb));
+    border-top: 3px solid rgb(var(--bs-header-bg-rgb));
+    box-sizing: border-box;
+    padding: 5px 10px;
+    border-radius: 10px 10px 0 0;
+}
+
+.dep-inf {
+    position: relative;
+    width: 65%;
+    margin: auto;
+    aspect-ratio: 5 / 3.3;
+    text-align: center;
+    background-color: rgba(var(--bs-header-bg-rgb), 0.1);
+    border: 1px solid rgba(var(--bs-header-bg-rgb), 1);
+    border-radius: 15px 15px 40% 40%;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.dep-inf img {
+    position: absolute;
+    inset: 0;
+    width: 90%;
+    height: 90%;
+    margin: auto;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0.7;
+}
+
+.link-info {
+    display: none;
+}
+
+.departments-generell {
+    width: 40%;
+    aspect-ratio: 6 / 2;
+    text-align: center;
+    align-content: center;
+    font-family: "Alex Brush", cursive;
+    font-weight: bold;
+    font-size: 2rem;
+    color: rgb(var(--bs-header-bg-rgb), 0.7);
+    background-color: rgba(var(--bs-header-bg-rgb), 0.1);
+    margin: 10px auto;
+    border-radius: 30px;
+    border: 1px solid rgba(var(--bs-header-bg-rgb), 1);
+}
+
+.second-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100vh;
+    padding: 30px 0;
+    justify-content: center;
+    background-color: rgb(var(--bs-body-color-rgb));
+    box-shadow: inset 0 0 10px black;
+}
+
+.header-container {
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: fit-content;
+    justify-content: center;
+}
+
+.galleri-header {
+    width: 50%;
+    text-align: center;
+    font-family: "Brush Script MT", cursive;
+    font-size: 4vh;
+    color: rgb(var(--bs-body-bg-rgb));
+    border-bottom: 2px solid rgb(var(--bs-body-bg-rgb));
+    border-radius: 10px;
+    padding: 2px;
+}
+
+.gallery-container {
+    position: relative;
+    display: flex;
+    width: 33%;
+    aspect-ratio: 5 / 2;
+    align-items: center;
+    align-content: center;
+    overflow: hidden;
+}
+
+.gallery {
+    position: relative;
+    width: 95%;
+    height: 90%;
+    border-radius: 30px;
+    overflow: hidden;
+    z-index: 100;
+}
+
+.gallery-image-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    color: red;
+    text-align: center;
+    align-content: center;
+}
+
+.gallery-label {
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    width: 30%;
+    height: 20%;
+    text-align: center;
+    align-content: center;
+    border-radius: 0 0 15px 0;
+    backdrop-filter: blur(1px);
+    border: 1px solid rgb(var(--bs-header-bg-rgb));
+    background-color: rgba(var(--bs-header-bg-rgb), 0.1);
+    z-index: 1;
+}
+
+.gallery-image {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.gallery-image img {
+    position: relative;
+    border-radius: 30px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.theard-container {
+    width: 100%;
+    height: 100vh;
+    padding: 20px 0;
+    text-align: center;
+    background-color: rgb(var(--bs-body-bg-rgb));
+}
+
+.theard-content-head {
+    width: 50%;
+    margin: auto;
+    text-align: center;
+    text-autospace: auto;
+    font-size: 4vh;
+    font-family: "Brush Script MT", cursive;
+    padding: 2px;
+    color: rgb(var(--bs-body-color-rgb));
+    border-radius: 10px;
+    border-bottom: 2px solid rgb(var(--bs-body-color-rgb));
+}
+
+.theard-content-info {
+    width: 70%;
+    height: fit-content;
+    font-size: 2.5vh;
+    align-content: center;
+    margin: 7px auto;
+    font-family: "Courier New", Courier, monospace;
+    font-weight: bold;
+    color: rgb(var(--bs-header-color-rgb));
+}
+
+.theard-content-map {
+    width: 50%;
+    aspect-ratio: 5 / 3;
+    margin: 10px auto;
+    padding: 10px;
+    border-top: 1px solid rgb(var(--bs-body-color-rgb));
+}
+
+.mapps {
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+    border: 2px solid rgba(var(--bs-header-color-rgb), 0.5);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+@media (max-width: 900px) {
+    .head-top {
+        font-size: 1em;
+    }
+
+    .department {
+        width: 40%;
+    }
+    
+    .departments-generell {
+        width: 50%;
+        font-size: 2.8vw;
+        padding: 5px;
+        aspect-ratio: 6 / 2.4;
+    }
+
+    .gallery-container {
+        width: 45%;
+    }
+}
+
+@media (max-width: 500px) {
+    .head-top {
+        font-size: 0.8em;
+    }
+
+    .banner-content {
+        width: 90%;
+        font-size: 10vw;
+    }
+    
+
+    .gallery-container {
+        width: 90%;
+    }
+    
+    .gallery-container:nth-child(even) {
+        justify-content: end;
+    }
+    
+    .gallery {
+        width: 80%;
+    }
+
+    .theard-content-info {
+        width: 80%;
+        font-size: 1.7vh;
+    }
+
+    .theard-content-map {
+        width: 80%;
+    }
+}

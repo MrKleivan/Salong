@@ -1,279 +1,92 @@
 <script setup>
 import { ref } from "vue";
 import { FrontPageLinks as frontPageLinksData } from "@/Models/MenuModel.ts";
+import Mapps from "@/Components/Mapps.vue";
 const FrontPageLinks = ref(frontPageLinksData);
 
-let widthOfFrontpageLinks = 90 / (FrontPageLinks.value.filter(l => l.isActive).length);
-let width = window.innerWidth;
-let height = window.innerHeight;
-
-if (width < 600) {
-  widthOfFrontpageLinks = 90;
-}
-
-console.log(height);
-
-function visiblePictures(link){
-  console.log(link.name);
-  let imagesForDisplay = [];
-  let startIndex = link.index;
-  let amountOfPictures = link.pictures.length;
-  let endIndex = startIndex + amountOfPictures;
-  let adjustedIndex = 0;
-  
-  for (let i = startIndex; i < endIndex; i++) {
-    if ( i >= link.pictures.length) {
-      imagesForDisplay.push(link.pictures[adjustedIndex]);
-      console.log('nu');
-      adjustedIndex++;
-    }
-    else {
-      imagesForDisplay.push(link.pictures[i]);
-    }
-  }
-  return imagesForDisplay;
-}
-
-function AdjustGallery(direction, link) {
-  switch (direction) {
-    case "left":
-      link.index--;
-      if(link.index < 0){
-        link.index = link.pictures.length - 1;
-      }
-      break;
-    case "right":
-      link.index++;
-      if(link.index > link.pictures.length - 1){
-        link.index = 0;
-      }
-      break;
-  }
-}
+const amountOfDepartments = FrontPageLinks.value.filter(d => d.isActive == true);
 
 </script>
 
 <template>
-  <div class="container">
-    
-    <main v-for="link in FrontPageLinks.filter(l => l.isActive)" :key="link.name" :style="{ width: widthOfFrontpageLinks + '%' }" >
-      <header>
-        {{link.label}}
-      </header>
-      <div class="content">
-        <nav v-for="underLink in link.underLinks" key="underLink.name" class="under-link">
-          <a :href="underLink.linkName">{{underLink.label}}</a><br/>
-        </nav>
-        <div class="department-info">
-          <div class="description">
-            {{link.description}}
-          </div>
-        </div>
-        <div class="under-links-container">
-          <div class="col-100 right">
-              <button @click="AdjustGallery('left', link)">◄</button>
-            <div class="image-container">
-              <div class="image" v-for="pic in visiblePictures(link)" :key="pic.label">
-                <img :src="pic.url"/>
-              </div>
-            </div>
-              <button @click="AdjustGallery('right', link)">►</button>
-          </div>
-        </div>
+  <div class="banner">
+    <div class="banner-content">
+      <div class="content-one">
+        Vår ekspertise
       </div>
-    </main>
+      <div class="content-two">
+        Din velvære
+      </div>
+    </div>
   </div>
-  <br/>
   <div class="container">
+    <div class="departments-head">
+      <div class="departments-head-title">
+        Vi tilbyr
+      </div>
+    </div>
     <div class="department" v-for="link in FrontPageLinks.filter(l => l.isActive)" :key="link.name">
       <div class="head">
           <div class="head-top">
             {{link.label}}
           </div>
           <div class="head-bottom">
-            
           </div>
       </div>
       <div class="dep-inf">
-        efwefwwe
+          <div class="img-container">
+            <img src="/FintVelLogoUtenTekst.png" alt="hhaah" />
+          </div>
+      </div>
+    </div>
+    <div class="departments-generell">
+      Vi behandler kundene våre med respekt.
+      <br/>
+      Vi hjelper deg finne dit ønske.
+      <br/>
+      Vi har kompetansen.
+    </div>
+  </div>
+  <div class="second-container">
+    <div class="header-container">
+      <div class="galleri-header">
+        Se vårt galleri
+      </div>
+    </div>
+    <div class="gallery-container" v-for="link in FrontPageLinks">
+      <div class="gallery">
+        <div class="gallery-image-container" @click="">
+          <div class="gallery-label">
+            {{link.pictures[0].label}}
+          </div>
+          <div class="gallery-image">
+            <img :src="link.pictures[0].url" />
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  <br/>
+  <div class="theard-container">
+    <div class="theard-content-head">
+      Om Oss
+    </div>
+    <div class="theard-content-info">
+      Vi er en moderne velvære- og skjønnhetssalong med fokus på kvalitet, presisjon og personlig service. Hos oss står kundens velvære i sentrum, og vi jobber målrettet for å gi deg et øyeblikk av ro i en travel hverdag – samtidig som vi fremhever din naturlige skjønnhet.
+
+      Salongen spesialiserer seg på vipper og tilbyr behandlinger som er skreddersydd dine ønsker og behov. Vi benytter oss av nøye utvalgte produkter og oppdaterte teknikker for å sikre trygge behandlinger og et resultat du kan føle deg komfortabel og fornøyd med. I tillegg tilbyr vi ulike velværebehandlinger som gir både kropp og sinn en pause.
+
+      Vårt mål er at du alltid skal føle deg sett, ivaretatt og velkommen. Enten du kommer til oss for en rask oppfriskning eller en lengre velværestund, ønsker vi å gi deg en profesjonell opplevelse i rolige og behagelige omgivelser.
+    </div>
+    <div class="theard-content-map">
+      <Mapps class="mapps" />
+    </div>
+    <div>
+      
+    </div>
+  </div>
 </template>
 
-<style scoped>
+<style scoped src="../Styles/FrontPageLinks.css">
 
-.container {
-  width: 100%;
-  height: fit-content;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-}
-
-main {
-  height: 50vh;
-  min-height: 350px;
-  margin: auto;
-  margin-top: 10vh;
-  text-align: center;
-  background: rgba(var(--bs-header-bg-rgb), 0.4);
-  border-radius: 30px 30px 10px 10px;
-  overflow: hidden;
-}
-
-header {
-  width: 100%;
-  height: 10%;
-  align-content: center;
-  color: rgb(var(--bs-body-color-rgb));
-  font-weight: bolder;
-  font-size: 20px;
-  font-family: "Courier New", Courier, monospace;
-  background: rgba(var(--bs-header-bg-rgb), 0.5);
-}
-
-.content {
-  width: 100%;
-  height: 90%;
-  border-radius: 0px 0px 10px 10px;
-  box-shadow: inset 0px 0px 2px 2px rgba(var(--bs-header-bg-rgb), 0.5);
-}
-
-.department-info {
-  width: 80%;
-  height: 20%;
-  margin: auto;
-}
-
-.description {
-  width: 100%;
-  min-height: 70%;
-  max-height: 100%;
-  margin: auto;
-  align-content: center;
-  font-family: "Courier New", Courier, monospace;
-  font-weight: bolder;
-  font-size: 1em;
-  color: rgb(var(--bs-body-color-rgb));
-  border-bottom: 1px solid rgba(var(--bs-body-bg-rgb), 0.9);
-  text-shadow: 2px 2px 9px rgba(var(--bs-header-bg-rgb), 0.5);
-}
-
-.under-links-container {
-  width: 80%;
-  height: 80%;
-  margin: auto;
-}
-
-.right {
-  display: flex;
-  height: 75%;
-  border-radius: 20px;
-  overflow: hidden;
-}
-
-.image-container {
-  display: flex;
-  width: 100%;
-  height: 100%;
-  margin: auto;
-  background-color: rgba(var(--bs-header-bg-rgb), 0.2);
-}
-
-.image {
-  width: 18%;
-  height: 100%;
-  margin: auto;
-}
-
-.image img {
-  width: 100%;
-  height: 100%;
-  margin: auto;
-  border: 1px solid rgba(var(--bs-header-bg-rgb), 1);
-  border-radius: 10px;
-}
-
-
-nav {
-  display: inline-block;
-  overflow: visible;
-  margin: auto;
-  border: 2px solid rgba(var(--bs-body-bg-rgb), 0.8);
-  border-radius: 5px;
-}
-
-a {
-  font-size: 0.8em;
-  text-decoration: none;
-  padding: 1px;
-  color: rgb(var(--bs-body-color-rgb));
-}
-
-nav:hover {
-  background-color: rgb(var(--bs-header-bg-rgb));
-}
-
-button {
-  border: none;
-  background-color: rgba(var(--bs-header-bg-rgb), 0.5);
-}
-
-.department {
-  position: relative;
-  width: 20%;
-  height: fit-content;
-  justify-items: center;
-}
-
-.head {
-  width: 210px;
-}
-
-.head-top {
-  position: relative;
-  width: 90%;
-  left: 10px;
-  text-align: center;
-  border-bottom: 3px solid rgb(var(--bs-header-bg-rgb));
-  box-sizing: border-box;
-  padding: 5px 10px;
-  border-radius: 0 0 10px 0;
-}
-
-.head-bottom {
-  position: relative;
-  width: 90%;
-  height: 20px;
-  left: 0;
-  margin-top: -3px;
-  border-top: 3px solid rgb(var(--bs-header-bg-rgb));
-  box-sizing: border-box;
-  padding: 5px 10px;
-  border-radius: 10px 0 0 0;
-}
-
-.dep-inf {
-  position: relative;
-  width: 6g0%;
-  height: 100px;
-  text-align: center;
-  border-radius: 15px;
-  overflow: hidden;
-  z-index: 1;
-}
-
-.dep-inf::before {
-  position: absolute;
-  content: "";
-  inset: 0;
-  background: rgba(var(--bs-header-bg-rgb), 0.2);
-  backdrop-filter: blur(10px);
-  transform: scale(1.15);
-  z-index: -1;
-}
 
 </style>

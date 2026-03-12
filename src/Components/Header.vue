@@ -1,7 +1,10 @@
 <script setup>
+import { useRoute } from "vue-router";
 import {HeaderLinks} from "@/Models/MenuModel.js";
 
-let borderCount = 25;
+const route = useRoute();
+
+let borderCount = 35;
 </script>
 
 <template>
@@ -9,12 +12,14 @@ let borderCount = 25;
     <div class="col-100 headerContainer">
       <div class="col-10 headerField left">
         <div class="headerLogoContainer">
-          <div class="headerLogo"></div>
+          <div class="headerName">
+            FintVell
+          </div>
         </div>
       </div>
       <div class="col-90 headerField right">
         <div class="col-10 main-menu" v-for="link in HeaderLinks">
-          <RouterLink class="main-menu-link" :to="{name: link.linkName, }">{{link.label}}</RouterLink>
+          <RouterLink :class=" route.name === link.name ? 'active-link' : 'main-menu-link'" :to="{name: link.linkName, }">{{link.label}}</RouterLink>
         </div>
       </div>
     </div>
@@ -23,7 +28,9 @@ let borderCount = 25;
           v-for="n in borderCount"
           :key="n"
           class="col-4 BottomheaderField"
-      ></div>
+      >
+        
+      </div>
     </div>
   </header>
 
@@ -33,74 +40,116 @@ let borderCount = 25;
 
 header {
   height: 100%;
+  z-index: 1;
 }
 
 .headerContainer {
-  height: 60%;
+  height: 50%;
   display: flex;
-  background: linear-gradient(rgba(var(--bs-header-bg-rgb), 0.9), rgba(var(--bs-header-bg-rgb), 0.6), rgba(var(--bs-header-bg-rgb), 0.4));
+  background: rgba(var(--bs-header-bg-rgb), 1);
+  z-index: 1;
 }
 
 .headerField {
   height: 100%;
   margin: 0;
   padding: 0;
+  z-index: 1;
 }
 
 .left {
   align-content: center;
+  z-index: 1;
 }
 
 .headerLogoContainer {
-  width: 80%;
-  height: 80%;
-  margin: auto;
-}
-
-.headerLogo {
+  position: relative;
+  display: flex;
   width: 100%;
   height: 100%;
+  justify-content: center;
+  align-content: center;
   margin: auto;
-  background-image: url("/Logo3.png");
-  background-repeat: no-repeat;
-  background-position: left;
-  background-size: contain;
+  z-index: 1;
+}
+
+.headerName {
+  position: relative;
+  width: 50%;
+  text-align: center;
+  justify-content: center;
+  align-content: center;
+  font-family: "Allura", cursive;
+  font-size: 3.5vh;
+  font-weight: bolder;
+  color: rgb(var(--bs-body-bg-rgb), 0.7);
 }
 
 .right {
   display: flex;
-  align-content: center;
-  justify-content: right;
+  height: 100%;
+  justify-content: end;
   align-items: center;
-  text-align: center;
+  z-index: 1;
 }
 
 .main-menu {
-  margin-right: 15px;
+  margin-right: 2%;
+  text-align: center;
+  z-index: 1;
 }
 
 .main-menu-link {
   width: 100%;
+  text-align: center;
   font-size: 3vh;
-  font-style: italic;
+  font-style: normal;
+  font-family: 'Allura', cursive;
   text-decoration: none;
-  color: rgb(var(--bs-body-color-rgb));
+  padding: 0;
+  color: rgb(var(--bs-body-bg-rgb));
+  z-index: 1;
+}
+
+.active-link {
+  width: 100%;
+  text-align: center;
+  font-size: 3vh;
+  font-family: 'Allura', cursive;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 0;
+  color: rgb(var(--bs-header-color-rgb));
+  z-index: 1;
 }
 
 .headerBottom {
   display: flex;
-  height: 40%;
-  background-color: rgba(var(--bs-header-bg-rgb), 0.4);
+  height: 30%;
+  background: linear-gradient(to bottom, rgba(var(--bs-header-bg-rgb), 1), rgba(var(--bs-header-bg-rgb), 0.6), rgba(var(--bs-header-bg-rgb), 0.2), rgba(var(--bs-header-bg-rgb), 0) );
+  z-index: 1;
 }
 
 .BottomheaderField {
   visibility: visible;
+  display: block;
   height: 100%;
+  justify-items: start;
   padding: 0;
-  background-color: rgb(194, 80, 96);
-  border-radius: 100px 45px 0 0;
-  box-shadow: inset rgba(var(--bs-header-bg-rgb), 0.9) 0px 4px 0px -2px;
+  margin: 0;
+  z-index: 1;
 }
 
 
+@media screen and (max-width: 800px) {
+  .main-menu-link {
+    font-size: 2vh;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .main-menu {
+    width: 15%;
+  }
+}
 </style>

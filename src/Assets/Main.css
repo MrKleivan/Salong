@@ -5,9 +5,10 @@
 }
 
 :root {
-    --bs-body-bg-rgb: 194, 80, 96;
-    --bs-body-color-rgb: 213, 118, 111;
-    --bs-header-bg-rgb: 115, 15, 5;
+    --bs-body-bg-rgb: 243, 156, 176;
+    --bs-body-color-rgb: 232, 69, 107;
+    --bs-header-bg-rgb: 179, 22, 59;
+    --bs-header-color-rgb: 86, 11, 28;
     --bs-header-shadow: none;
     --bs-content-bg-rgb: 245, 245, 245;
     --bs-btn-bg-b-rgb: 240, 240, 240;
@@ -20,6 +21,12 @@
     --bs-primary-rgb: 0, 120, 255;
     --bs-secondary-rgb: 130, 130, 130;
 }
+/* Chrome, Edge, Safari */
+::-webkit-scrollbar {
+    display: none;
+}
+
+
 
 body {
     width: 100%;

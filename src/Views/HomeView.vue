@@ -1,13 +1,14 @@
 <script setup>
-import Header from "@/components/Header.vue";
+import Header from "@/Components/Header.vue";
 import Footer from "../Components/Footer.vue";
 import FrontPageLinks from "@/Components/FrontPageLinks.vue";
+import DynamicDepartmentCard from "@/Components/DynamicDepartmentCard.vue";
 </script>
 
 <template>
   <Header />
   <main>
-  <FrontPageLinks />
+    <FrontPageLinks />
   </main>
   <Footer />
 </template>
@@ -26,6 +27,8 @@ main {
 
 Footer {
   width: 100%;
-  height: 15vh;
+  height: 30vh;
+  margin: 0;
+  padding: 0;
 }
 </style>

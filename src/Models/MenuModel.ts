@@ -13,6 +13,11 @@ const HeaderLinks = [
         name: "Prices",
         linkName: "Home",
         label: "Priser",
+    },
+    {
+        name: "Login",
+        linkName: "Home",
+        label: "Login",
     }
 ];
 const FrontPageLinks = [
@@ -62,7 +67,7 @@ const FrontPageLinks = [
             }
         ],
         index: 0,
-        isActive: false,
+        isActive: true,
     },
     {
         name: "Lashes",
@@ -109,7 +114,7 @@ const FrontPageLinks = [
         ],
         pictures: [
             {
-                url: "src/Images/Lashes/Classic.jpg",
+                url: "/Images/Lashes/Classic.jpg",
                 label: "Vipper",
             },
             {
